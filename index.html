@@ -13,9 +13,11 @@
 
     <div class="month-nav">
       <button id="prev-month">◀</button>
-      <span id="month-label"></span>
+      <span id="month-label">September 2025</span>
       <button id="next-month">▶</button>
     </div>
+
+    <br>
 
     <form id="expense-form">
       <input type="text" id="expense-name" placeholder="Expense name" required />
@@ -23,29 +25,29 @@
       <button type="submit">Add Expense</button>
     </form>
 
-    <!-- Grid header -->
-    <div class="grid-container grid-header">
-      <div>Expense</div>
-      <div>Amount (₹)</div>
-      <div>Action</div>
-    </div>
-
-    <!-- Expense list container -->
-    <div id="expense-list">
-      <!-- Each expense item will be a div.grid-container generated dynamically -->
-      <!-- Example:
-      <div class="grid-container">
-        <div class="grid-item">Groceries</div>
-        <div class="grid-item">100.00</div>
-        <div class="grid-item"><button class="delete-btn">✖</button></div>
-      </div>
-      -->
-    </div>
-
-    <!-- Total -->
-    <div class="grid-footer">
-      Total: <span id="total-amount">0.00</span> ₹
-    </div>
+    <table id="expense-table">
+      <thead>
+        <tr>
+          <th class="expense-col">Expense</th>
+          <th class="amount-col">Amount (₹)</th>
+          <th class="action-col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="expense-list">
+        <tr>
+          <td>Petrol</td>
+          <td>100.00</td>
+          <td><button class="delete-btn">🗑️</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td id="total-amount">100.00</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
   <script src="main.js"></script>
