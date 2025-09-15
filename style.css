@@ -29,8 +29,8 @@ body {
 
 /* Heading */
 h1 {
-  font-size: 28px;
-  color: #333;
+  font-size: 40px;
+  color: #2b4c7e; /* Muted strong blue */
   margin-bottom: 25px;
 }
 
@@ -62,7 +62,7 @@ h1 {
 #month-label {
   font-size: 18px;
   font-weight: bold;
-  color: #444;
+  color: #333;
 }
 
 /* Form */
@@ -78,18 +78,19 @@ input[type="text"],
 input[type="number"] {
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px solid #add8e6; /* light blue */
   border-radius: 6px;
   flex: 1 1 150px;
   min-width: 120px;
+  outline: none;
 }
 
 button[type="submit"] {
   padding: 10px 20px;
   font-size: 16px;
-  font-weight: 600;
-  background: linear-gradient(135deg, #007bff, #00b7ff);
-  color: white;
+  font-weight: bold;
+  background: linear-gradient(135deg, #90ee90, #32cd32); /* light green gradient */
+  color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -97,26 +98,28 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: linear-gradient(135deg, #0056b3, #009ee3);
+  background: linear-gradient(135deg, #7ecf7e, #28a428);
   transform: translateY(-2px);
 }
 
+/* Table Styling */
 /* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   text-align: left;
+  border: 2px solid black;
 }
 
 th, td {
   padding: 14px 18px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid black;
   font-size: 16px;
 }
 
 th {
-  background-color: #f8f9fa;
+  background-color: #f1f1f1;
   font-weight: 600;
   color: #333;
 }
@@ -124,7 +127,7 @@ th {
 tfoot td {
   font-weight: bold;
   font-size: 18px;
-  background-color: #f0f0f0;
+  background-color: #f8f9fa;
 }
 
 /* Column widths */
@@ -139,6 +142,7 @@ tfoot td {
 .action-col {
   width: 20%;
 }
+
 
 /* Delete button */
 .delete-btn {
