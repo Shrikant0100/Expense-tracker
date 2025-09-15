@@ -12,36 +12,40 @@
     <h1>Monthly Expense Tracker</h1>
 
     <div class="month-nav">
-        <button id="prev-month">◀</button>
-        <span id="month-label"></span>
-        <button id="next-month">▶</button>
+      <button id="prev-month">◀</button>
+      <span id="month-label"></span>
+      <button id="next-month">▶</button>
     </div>
 
     <form id="expense-form">
-        <input type="text" id="expense-name" placeholder="Expense name" required />
-        <input type="number" id="expense-amount" placeholder="Amount" min="0" step="0.01" required />
-        <button type="submit">Add Expense</button>
+      <input type="text" id="expense-name" placeholder="Expense name" required />
+      <input type="number" id="expense-amount" placeholder="Amount" min="0" step="0.01" required />
+      <button type="submit">Add Expense</button>
     </form>
 
+    <!-- Grid header -->
+    <div class="grid-container grid-header">
+      <div>Expense</div>
+      <div>Amount (₹)</div>
+      <div>Action</div>
+    </div>
 
-    <table id="expense-table">
-      <thead>
-        <tr>
-          <th>Expense</th>
-          <th>Amount (₹)</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="expense-list">
-        <!-- Expense rows here -->
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Total</td>
-          <td id="total-amount">0.00</td>
-        </tr>
-      </tfoot>
-    </table>
+    <!-- Expense list container -->
+    <div id="expense-list">
+      <!-- Each expense item will be a div.grid-container generated dynamically -->
+      <!-- Example:
+      <div class="grid-container">
+        <div class="grid-item">Groceries</div>
+        <div class="grid-item">100.00</div>
+        <div class="grid-item"><button class="delete-btn">✖</button></div>
+      </div>
+      -->
+    </div>
+
+    <!-- Total -->
+    <div class="grid-footer">
+      Total: <span id="total-amount">0.00</span> ₹
+    </div>
   </div>
 
   <script src="main.js"></script>
