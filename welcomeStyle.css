@@ -1,0 +1,71 @@
+/* Reset and base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0f2ff, #f9fcff);
+  color: #2c3e50;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Container */
+.container {
+  background: white;
+  padding: 32px 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 123, 255, 0.15);
+  max-width: 460px;
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #007bff;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  user-select: none;
+}
+
+.note {
+  font-weight: 600;
+  color: #e67e22;
+  margin-bottom: 25px;
+}
+
+#message {
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #27ae60;
+}
+
+/* Button */
+button {
+  background: linear-gradient(135deg, #00d1b2, #007bff);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 209, 178, 0.5);
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  user-select: none;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #007bff, #00d1b2);
+  box-shadow: 0 8px 22px rgba(0, 123, 255, 0.6);
+  transform: translateY(-3px);
+}

@@ -4,74 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Welcome - Monthly Expense Tracker</title>
-  <style>
-    /* Center content vertically and horizontally */
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f2ff, #f9fcff);
-      color: #2c3e50;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .container {
-      background: white;
-      padding: 32px 40px;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0, 123, 255, 0.15);
-      max-width: 460px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: #007bff;
-    }
-
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      line-height: 1.4;
-      user-select: none;
-    }
-
-    .note {
-      font-weight: 600;
-      color: #e67e22;
-      margin-bottom: 25px;
-    }
-
-    #message {
-      margin-bottom: 25px;
-      font-weight: 600;
-      color: #27ae60;
-    }
-
-    button {
-      background: linear-gradient(135deg, #00d1b2, #007bff);
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(0, 209, 178, 0.5);
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-      user-select: none;
-    }
-
-    button:hover {
-      background: linear-gradient(135deg, #007bff, #00d1b2);
-      box-shadow: 0 8px 22px rgba(0, 123, 255, 0.6);
-      transform: translateY(-3px);
-    }
-  </style>
+  <link rel="stylesheet" href="welcomeStyle.css?v=3">
 </head>
 <body>
   <div class="container">
@@ -82,38 +15,6 @@
     <button id="go-button" style="display:none;">Go to Expense Tracker</button>
   </div>
 
-  <script>
-    const noteText = document.getElementById('note-text');
-    const message = document.getElementById('message');
-    const goBtn = document.getElementById('go-button');
-
-    function showMessageAndButton() {
-      noteText.style.display = 'none';
-      message.style.display = 'block';
-      goBtn.style.display = 'inline-block';
-    }
-
-    // Button click redirects to main tracker page (update filename if needed)
-    goBtn.addEventListener('click', () => {
-      window.location.href = 'tracker.html'; // <-- Change to your actual main page file name
-    });
-
-    function checkViewport() {
-      const isDesktop = window.innerWidth >= 1024;
-      if (isDesktop) {
-        showMessageAndButton();
-      } else {
-        noteText.style.display = 'block';
-        message.style.display = 'none';
-        goBtn.style.display = 'none';
-      }
-    }
-
-    // Check on load
-    checkViewport();
-
-    // Check whenever window resizes
-    window.addEventListener('resize', checkViewport);
-  </script>
+  <script src="welcome.js?v=3"></script>
 </body>
 </html>
