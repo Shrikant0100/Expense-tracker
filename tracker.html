@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="container">
+    <h1>Monthly Expense Tracker</h1>
+
+    <div class="month-nav">
+      <button id="prev-month">◀</button>
+      <span id="month-label">September 2025</span>
+      <button id="next-month">▶</button>
+    </div>
+    <br />
+    <form id="expense-form">
+      <input type="text" id="expense-name" placeholder="Expense name" required />
+      <input type="number" id="expense-amount" placeholder="Amount" min="0" step="0.01" required />
+      <button type="submit">Add Expense</button>
+    </form>
+    <br />
+    <div class="table-wrapper">
+      <table id="expense-table">
+        <thead>
+          <tr>
+            <th class="day-col">Date</th>
+            <th class="expense-col">Expense</th>
+            <th class="amount-col">Amount (₹)</th>
+            <th class="action-col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="expense-list">
+          <!-- Dynamically populated -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td data-label="Total" colspan="2" style="font-weight:bold; font-size: 1.1rem;">Total</td>
+            <td data-label="Amount (₹)" id="total-amount" style="font-weight:bold; font-size: 1.1rem;"></td>
+            <td data-label="Action"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <script src="main.js?v=3"></script>
+</body>
+</html>

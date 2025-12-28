@@ -3,50 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Expense Tracker</title>
-  <link rel="stylesheet" href="style.css?v=3">
-  <link rel="manifest" href="manifest.json" />
+  <title>Welcome - Monthly Expense Tracker</title>
+  <style>
+    /* Center content vertically and horizontally */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f2ff, #f9fcff);
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 32px 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 123, 255, 0.15);
+      max-width: 460px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #007bff;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      user-select: none;
+    }
+
+    .note {
+      font-weight: 600;
+      color: #e67e22;
+      margin-bottom: 25px;
+    }
+
+    #message {
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: #27ae60;
+    }
+
+    button {
+      background: linear-gradient(135deg, #00d1b2, #007bff);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 209, 178, 0.5);
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      user-select: none;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #007bff, #00d1b2);
+      box-shadow: 0 8px 22px rgba(0, 123, 255, 0.6);
+      transform: translateY(-3px);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Monthly Expense Tracker</h1>
-
-    <div class="month-nav">
-      <button id="prev-month">◀</button>
-      <span id="month-label">September 2025</span>
-      <button id="next-month">▶</button>
-    </div>
-    <br />
-    <form id="expense-form">
-      <input type="text" id="expense-name" placeholder="Expense name" required />
-      <input type="number" id="expense-amount" placeholder="Amount" min="0" step="0.01" required />
-      <button type="submit">Add Expense</button>
-    </form>
-    <br />
-    <div class="table-wrapper">
-      <table id="expense-table">
-        <thead>
-          <tr>
-            <th class="day-col">Date</th>
-            <th class="expense-col">Expense</th>
-            <th class="amount-col">Amount (₹)</th>
-            <th class="action-col">Action</th>
-          </tr>
-        </thead>
-        <tbody id="expense-list">
-          <!-- Dynamically populated -->
-        </tbody>
-        <tfoot>
-          <tr>
-            <td data-label="Total" colspan="2" style="font-weight:bold; font-size: 1.1rem;">Total</td>
-            <td data-label="Amount (₹)" id="total-amount" style="font-weight:bold; font-size: 1.1rem;"></td>
-            <td data-label="Action"></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+    <h1>Welcome!</h1>
+    <p>This is your Monthly Expense Tracker. You can add expenses with custom dates and manage your budget easily.</p>
+    <p class="note" id="note-text">Note - For better user experience switch to desktop site.</p>
+    <p id="message" style="display:none;">Expense Tracker will open in desktop site. Thank you!</p>
+    <button id="go-button" style="display:none;">Go to Expense Tracker</button>
   </div>
 
-  <script src="main.js?v=3"></script>
+  <script>
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const noteText = document.getElementById('note-text');
+    const message = document.getElementById('message');
+    const goBtn = document.getElementById('go-button');
+
+    function showMessageAndButton() {
+      noteText.style.display = 'none';
+      message.style.display = 'block';
+      goBtn.style.display = 'inline-block';
+    }
+
+    goBtn.addEventListener('click', () => {
+      window.location.href = 'tracker.html'; // Adjust if your main page filename is different
+    });
+
+    if (isDesktop) {
+      // If desktop, show message and button immediately
+      showMessageAndButton();
+    } else {
+      // If mobile, show note, and listen for user switching to desktop (landscape with wide viewport)
+      window.matchMedia("(min-width: 1024px)").addEventListener('change', e => {
+        if (e.matches) {
+          showMessageAndButton();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
