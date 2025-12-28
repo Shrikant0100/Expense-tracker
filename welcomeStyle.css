@@ -1,11 +1,10 @@
-/* Reset and base styles */
-html, body {
+/* Center content vertically and horizontally */
+body, html {
+  height: 100%;
   margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #e0f2ff, #f9fcff);
   color: #2c3e50;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +12,6 @@ html, body {
   padding: 20px;
 }
 
-/* Container */
 .container {
   background: white;
   padding: 32px 40px;
@@ -22,14 +20,12 @@ html, body {
   max-width: 460px;
 }
 
-/* Heading */
 h1 {
   margin-bottom: 20px;
   font-size: 2rem;
   color: #007bff;
 }
 
-/* Paragraphs */
 p {
   font-size: 1.1rem;
   margin-bottom: 20px;
@@ -49,7 +45,6 @@ p {
   color: #27ae60;
 }
 
-/* Button */
 button {
   background: linear-gradient(135deg, #00d1b2, #007bff);
   color: white;
