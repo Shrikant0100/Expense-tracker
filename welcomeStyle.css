@@ -28,7 +28,7 @@ h1 {
 
 p {
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   line-height: 1.4;
   user-select: none;
 }
@@ -36,13 +36,6 @@ p {
 .note {
   font-weight: 600;
   color: #e67e22;
-  margin-bottom: 25px;
-}
-
-#message {
-  margin-bottom: 25px;
-  font-weight: 600;
-  color: #27ae60;
 }
 
 button {
