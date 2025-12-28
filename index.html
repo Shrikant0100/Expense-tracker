@@ -83,7 +83,6 @@
   </div>
 
   <script>
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const noteText = document.getElementById('note-text');
     const message = document.getElementById('message');
     const goBtn = document.getElementById('go-button');
@@ -94,21 +93,27 @@
       goBtn.style.display = 'inline-block';
     }
 
+    // Button click redirects to main tracker page (update filename if needed)
     goBtn.addEventListener('click', () => {
-      window.location.href = 'tracker.html'; // Adjust if your main page filename is different
+      window.location.href = 'index.html'; // <-- Change to your actual main page file name
     });
 
-    if (isDesktop) {
-      // If desktop, show message and button immediately
-      showMessageAndButton();
-    } else {
-      // If mobile, show note, and listen for user switching to desktop (landscape with wide viewport)
-      window.matchMedia("(min-width: 1024px)").addEventListener('change', e => {
-        if (e.matches) {
-          showMessageAndButton();
-        }
-      });
+    function checkViewport() {
+      const isDesktop = window.innerWidth >= 1024;
+      if (isDesktop) {
+        showMessageAndButton();
+      } else {
+        noteText.style.display = 'block';
+        message.style.display = 'none';
+        goBtn.style.display = 'none';
+      }
     }
+
+    // Check on load
+    checkViewport();
+
+    // Check whenever window resizes
+    window.addEventListener('resize', checkViewport);
   </script>
 </body>
 </html>
