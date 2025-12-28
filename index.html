@@ -16,36 +16,35 @@
       <span id="month-label">September 2025</span>
       <button id="next-month">▶</button>
     </div>
-    <br>
+    <br />
     <form id="expense-form">
       <input type="text" id="expense-name" placeholder="Expense name" required />
       <input type="number" id="expense-amount" placeholder="Amount" min="0" step="0.01" required />
       <button type="submit">Add Expense</button>
     </form>
-    <br>
-    <table id="expense-table">
-      <thead>
-        <tr>
-          <th class="expense-col">Expense</th>
-          <th class="amount-col">Amount (₹)</th>
-          <th class="action-col">Action</th>
-        </tr>
-      </thead>
-      <tbody id="expense-list">
-        <tr>
-          <td>Petrol</td>
-          <td>100.00</td>
-          <td><button class="delete-btn">🗑️</button></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Total</td>
-          <td id="total-amount">100.00</td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
+    <br />
+    <div class="table-wrapper">
+      <table id="expense-table">
+        <thead>
+          <tr>
+            <th class="day-col">Day</th>
+            <th class="expense-col">Expense</th>
+            <th class="amount-col">Amount (₹)</th>
+            <th class="action-col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="expense-list">
+          <!-- Dynamically populated -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td data-label="Total" colspan="2" style="font-weight:bold; font-size: 1.1rem;">Total</td>
+            <td data-label="Amount (₹)" id="total-amount" style="font-weight:bold; font-size: 1.1rem;"></td>
+            <td data-label="Action"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
 
   <script src="main.js"></script>

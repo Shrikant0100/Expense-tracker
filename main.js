@@ -36,26 +36,45 @@ function renderExpenses() {
   expenseList.innerHTML = '';
   let total = 0;
 
-  expenses.forEach(({ name, amount }, index) => {
+  expenses.forEach(({ day, name, amount }, index) => {
     const tr = document.createElement('tr');
+
+    const dayTd = document.createElement('td');
+    dayTd.textContent = day;
+    dayTd.setAttribute('data-label', 'Day');
 
     const nameTd = document.createElement('td');
     nameTd.textContent = name;
+    nameTd.setAttribute('data-label', 'Expense');
 
     const amountTd = document.createElement('td');
     amountTd.textContent = amount.toFixed(2);
+    amountTd.setAttribute('data-label', 'Amount (₹)');
+    amountTd.style.textAlign = 'right';
 
     const deleteTd = document.createElement('td');
+    deleteTd.setAttribute('data-label', 'Action');
+    deleteTd.style.textAlign = 'center';
+
     const delBtn = document.createElement('button');
     delBtn.textContent = '🗑️';
     delBtn.className = 'delete-btn';
-    delBtn.onclick = () => {
+
+    delBtn.addEventListener('click', () => {
+      const confirmed = window.confirm(
+        `Are you sure you want to delete this expense?\n\n${name} - ₹${amount.toFixed(2)}`
+      );
+
+      if (!confirmed) return;
+
       expenses.splice(index, 1);
       saveExpenses();
       renderExpenses();
-    };
+    });
+
     deleteTd.appendChild(delBtn);
 
+    tr.appendChild(dayTd);
     tr.appendChild(nameTd);
     tr.appendChild(amountTd);
     tr.appendChild(deleteTd);
@@ -65,6 +84,7 @@ function renderExpenses() {
   });
 
   totalAmountEl.textContent = total.toFixed(2);
+  totalAmountEl.style.textAlign = 'right';
 }
 
 form.addEventListener('submit', (e) => {
@@ -76,7 +96,8 @@ form.addEventListener('submit', (e) => {
   const amount = parseFloat(amountInput.value);
 
   if (name && !isNaN(amount) && amount >= 0) {
-    expenses.push({ name, amount });
+    const day = new Date().getDate(); // day of month
+    expenses.push({ day, name, amount });
     saveExpenses();
     renderExpenses();
     nameInput.value = '';
