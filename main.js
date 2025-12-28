@@ -36,22 +36,33 @@ function renderExpenses() {
   expenseList.innerHTML = '';
   let total = 0;
 
-  expenses.forEach(({ day, name, amount }, index) => {
+  expenses.forEach(({ date, name, amount }, index) => {
     const tr = document.createElement('tr');
 
-    const dayTd = document.createElement('td');
-    dayTd.textContent = day;
-    dayTd.setAttribute('data-label', 'Day');
+    // Date input field for each record
+    const dateTd = document.createElement('td');
+    const dateInput = document.createElement('input');
+    dateInput.type = 'date';
+    dateInput.value = date || new Date().toISOString().split('T')[0];
+    dateInput.addEventListener('change', (e) => {
+      expenses[index].date = e.target.value;
+      saveExpenses();
+    });
+    dateTd.appendChild(dateInput);
+    dateTd.setAttribute('data-label', 'Date');
 
+    // Name
     const nameTd = document.createElement('td');
     nameTd.textContent = name;
     nameTd.setAttribute('data-label', 'Expense');
 
+    // Amount
     const amountTd = document.createElement('td');
     amountTd.textContent = amount.toFixed(2);
     amountTd.setAttribute('data-label', 'Amount (₹)');
     amountTd.style.textAlign = 'right';
 
+    // Delete button
     const deleteTd = document.createElement('td');
     deleteTd.setAttribute('data-label', 'Action');
     deleteTd.style.textAlign = 'center';
@@ -59,22 +70,19 @@ function renderExpenses() {
     const delBtn = document.createElement('button');
     delBtn.textContent = '🗑️';
     delBtn.className = 'delete-btn';
-
     delBtn.addEventListener('click', () => {
       const confirmed = window.confirm(
         `Are you sure you want to delete this expense?\n\n${name} - ₹${amount.toFixed(2)}`
       );
-
       if (!confirmed) return;
-
       expenses.splice(index, 1);
       saveExpenses();
       renderExpenses();
     });
-
     deleteTd.appendChild(delBtn);
 
-    tr.appendChild(dayTd);
+    // Append all columns
+    tr.appendChild(dateTd);
     tr.appendChild(nameTd);
     tr.appendChild(amountTd);
     tr.appendChild(deleteTd);
@@ -94,10 +102,10 @@ form.addEventListener('submit', (e) => {
 
   const name = nameInput.value.trim();
   const amount = parseFloat(amountInput.value);
+  const today = new Date().toISOString().split('T')[0]; // default current date
 
   if (name && !isNaN(amount) && amount >= 0) {
-    const day = new Date().getDate(); // day of month
-    expenses.push({ day, name, amount });
+    expenses.push({ date: today, name, amount });
     saveExpenses();
     renderExpenses();
     nameInput.value = '';
