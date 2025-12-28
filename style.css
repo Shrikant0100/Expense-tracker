@@ -32,7 +32,8 @@ h1 {
   font-weight: 900;
   background: linear-gradient(270deg, #007bff, #00d1b2, #007bff);
   background-size: 600% 600%;
-  -webkit-background-clip: text;
+  background-clip: text;          /* Standard property */
+  -webkit-background-clip: text;  /* Chrome, Safari */
   -webkit-text-fill-color: transparent;
   animation: gradientShift 8s ease infinite;
   margin-bottom: 28px;

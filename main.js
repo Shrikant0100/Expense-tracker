@@ -8,6 +8,18 @@ const monthLabel = document.getElementById('month-label');
 
 let currentMonth = new Date();
 
+// Force desktop layout on page visit
+function requestDesktopSite() {
+  const viewport = document.querySelector("meta[name=viewport]");
+  if (viewport) {
+    viewport.setAttribute('content', 'width=1024'); // Fixed width to trigger desktop CSS
+  }
+}
+
+// Call on page load
+requestDesktopSite();
+
+
 // Format: YYYY-MM (e.g., 2025-08)
 function getMonthKey(date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
